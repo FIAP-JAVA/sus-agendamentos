@@ -1,15 +1,13 @@
 package br.com.fiap.sus_agendamentos.controller;
 
-import br.com.fiap.sus_agendamentos.medico.ListagemMedicoDTO;
-import br.com.fiap.sus_agendamentos.medico.Medico;
-import br.com.fiap.sus_agendamentos.medico.MedicoDTO;
-import br.com.fiap.sus_agendamentos.medico.MedicoRepository;
+import br.com.fiap.sus_agendamentos.medico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("medicos")
@@ -25,7 +23,20 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<ListagemMedicoDTO> listar() {
-        return medicoRepository.findAll().stream().map(ListagemMedicoDTO::new).toList();
+    public Page<ListarMedicoDTO> listar(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao) {
+        return medicoRepository.findAll(paginacao).map(ListarMedicoDTO::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid AtualizarMedicoDTO atualizarMedicoDTO) {
+        var medico = medicoRepository.getReferenceById(atualizarMedicoDTO.id());
+        medico.atualizarInformacoes(atualizarMedicoDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        medicoRepository.deleteById(id);
     }
 }
