@@ -3,11 +3,9 @@ package br.com.fiap.sus_agendamentos.endereco;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Embeddable
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Endereco {
 
@@ -18,6 +16,9 @@ public class Endereco {
     private String cidade;
     private String numero;
     private String complemento;
+
+    public Endereco() {
+    }
 
     public Endereco(EnderecoDTO enderecoDTO) {
         this.logradouro = enderecoDTO.logradouro();
