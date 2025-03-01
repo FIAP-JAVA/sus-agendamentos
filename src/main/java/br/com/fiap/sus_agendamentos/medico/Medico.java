@@ -34,5 +34,4 @@ public class Medico {
         this.especialidade = medicoDTO.especialidade();
         this.endereco = new Endereco(medicoDTO.endereco());
     }
-
 }

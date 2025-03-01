@@ -1,5 +1,8 @@
-package br.com.fiap.sus_agendamentos.paciente;
+package br.com.fiap.sus_agendamentos.controller;
 
+import br.com.fiap.sus_agendamentos.paciente.Paciente;
+import br.com.fiap.sus_agendamentos.paciente.PacienteDTO;
+import br.com.fiap.sus_agendamentos.paciente.PacienteRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
