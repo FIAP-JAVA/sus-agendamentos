@@ -1,6 +1,6 @@
-package br.com.fiap.sus_agendamentos.paciente;
+package br.com.fiap.sus_agendamentos.domain.paciente;
 
-import br.com.fiap.sus_agendamentos.endereco.Endereco;
+import br.com.fiap.sus_agendamentos.domain.endereco.Endereco;
 
 public record DetalhamentoPacienteDTO(
         String nome,

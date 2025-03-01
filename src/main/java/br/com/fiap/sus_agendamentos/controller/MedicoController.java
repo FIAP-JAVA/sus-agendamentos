@@ -1,5 +1,6 @@
 package br.com.fiap.sus_agendamentos.controller;
 
+import br.com.fiap.sus_agendamentos.domain.medico.*;
 import br.com.fiap.sus_agendamentos.medico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

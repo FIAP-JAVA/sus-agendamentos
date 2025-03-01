@@ -1,6 +1,6 @@
-package br.com.fiap.sus_agendamentos.medico;
+package br.com.fiap.sus_agendamentos.domain.medico;
 
-import br.com.fiap.sus_agendamentos.endereco.Endereco;
+import br.com.fiap.sus_agendamentos.domain.endereco.Endereco;
 
 public record DetalhamentoMedicoDTO(
         Long id,

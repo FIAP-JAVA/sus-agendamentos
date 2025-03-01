@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.paciente;
+package br.com.fiap.sus_agendamentos.domain.paciente;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

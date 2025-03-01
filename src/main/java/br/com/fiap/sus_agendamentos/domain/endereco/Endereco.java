@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.endereco;
+package br.com.fiap.sus_agendamentos.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

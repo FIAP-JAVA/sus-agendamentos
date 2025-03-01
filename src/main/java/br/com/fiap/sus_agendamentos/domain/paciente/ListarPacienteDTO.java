@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.paciente;
+package br.com.fiap.sus_agendamentos.domain.paciente;
 
 public record ListarPacienteDTO(
         Long id,

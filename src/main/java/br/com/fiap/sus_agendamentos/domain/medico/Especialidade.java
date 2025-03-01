@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.medico;
+package br.com.fiap.sus_agendamentos.domain.medico;
 
 public enum Especialidade {
 

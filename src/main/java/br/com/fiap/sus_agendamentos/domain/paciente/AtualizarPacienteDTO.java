@@ -1,6 +1,6 @@
-package br.com.fiap.sus_agendamentos.paciente;
+package br.com.fiap.sus_agendamentos.domain.paciente;
 
-import br.com.fiap.sus_agendamentos.endereco.EnderecoDTO;
+import br.com.fiap.sus_agendamentos.domain.endereco.EnderecoDTO;
 import jakarta.validation.Valid;
 
 public record AtualizarPacienteDTO(
