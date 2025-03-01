@@ -38,6 +38,6 @@ public class MedicoController {
     @Transactional
     public void excluir(@PathVariable Long id) {
         var medico = medicoRepository.getReferenceById(id);
-        medico.excluir();
+        medico.inativar();
     }
 }

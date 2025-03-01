@@ -42,15 +42,17 @@ public class Medico {
         if (atualizarMedicoDTO.nome() != null) {
             this.nome = atualizarMedicoDTO.nome();
         }
+
         if (atualizarMedicoDTO.telefone() != null) {
             this.telefone = atualizarMedicoDTO.telefone();
         }
+
         if (atualizarMedicoDTO.endereco() != null) {
             this.endereco.atualizarInformacoes(atualizarMedicoDTO.endereco());
         }
     }
 
-    public void excluir() {
+    public void inativar() {
         this.ativo = false;
     }
 }
