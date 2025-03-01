@@ -1,10 +1,7 @@
 package br.com.fiap.sus_agendamentos.endereco;
 
-import br.com.fiap.sus_agendamentos.medico.CadastroMedicoDTO;
-import br.com.fiap.sus_agendamentos.medico.Especialidade;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
