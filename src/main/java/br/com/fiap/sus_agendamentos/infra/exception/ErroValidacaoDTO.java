@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.infra;
+package br.com.fiap.sus_agendamentos.infra.exception;
 
 import org.springframework.validation.FieldError;
 

@@ -1,5 +1,6 @@
-package br.com.fiap.sus_agendamentos.infra;
+package br.com.fiap.sus_agendamentos.infra.exception;
 
+import br.com.fiap.sus_agendamentos.infra.exception.ErroValidacaoDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
