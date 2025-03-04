@@ -1,6 +1,7 @@
 package br.com.fiap.sus_agendamentos.domain.consulta;
 
-import br.com.fiap.sus_agendamentos.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
+import br.com.fiap.sus_agendamentos.domain.consulta.validacoes.agendamento.ValidadorAgendamentoDeConsulta;
+import br.com.fiap.sus_agendamentos.domain.consulta.validacoes.cancelamento.ValidadorCancelamentoDeConsulta;
 import br.com.fiap.sus_agendamentos.domain.medico.Medico;
 import br.com.fiap.sus_agendamentos.domain.medico.MedicoRepository;
 import br.com.fiap.sus_agendamentos.domain.paciente.PacienteRepository;
@@ -24,6 +25,9 @@ public class AgendaDeConsultas {
 
     @Autowired
     private List<ValidadorAgendamentoDeConsulta> validadorAgendamentoDeConsultas;
+
+    @Autowired
+    private List<ValidadorCancelamentoDeConsulta> validadoresCancelamentoDeConsultas;
 
     public DetalhamentoConsultaDTO agendar(AgendamentoConsultaDTO agendamentoConsultaDTO) {
         if (!pacienteRepository.existsById(agendamentoConsultaDTO.idPaciente())) {
@@ -66,6 +70,8 @@ public class AgendaDeConsultas {
         if (!consultaRepository.existsById(cancelamentoConsultaDTO.idConsulta())) {
             throw new ValidacaoException("Id da consulta informado não existe.");
         }
+
+        validadoresCancelamentoDeConsultas.forEach(v -> v.validar(cancelamentoConsultaDTO));
 
         var consulta = consultaRepository.getReferenceById(cancelamentoConsultaDTO.idConsulta());
         consulta.cancelar(cancelamentoConsultaDTO.motivo());

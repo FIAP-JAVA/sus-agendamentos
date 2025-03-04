@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.domain.consulta.validacoes;
+package br.com.fiap.sus_agendamentos.domain.consulta.validacoes.agendamento;
 
 import br.com.fiap.sus_agendamentos.domain.consulta.AgendamentoConsultaDTO;
 import br.com.fiap.sus_agendamentos.domain.consulta.ConsultaRepository;
@@ -15,7 +15,7 @@ public class ValidadorMedicoComOutraConsultaNoMesmoHorario implements ValidadorA
     @Override
     public void validar(AgendamentoConsultaDTO agendamentoConsultaDTO) {
         var medicoPossuiOutraConsultaNoMesmoHorario = consultaRepository
-                .existsByMedicoIdAndData(agendamentoConsultaDTO.idMedico(), agendamentoConsultaDTO.data());
+                .existsByMedicoIdAndDataAndMotivoCancelamentoIsNull(agendamentoConsultaDTO.idMedico(), agendamentoConsultaDTO.data());
 
         if (medicoPossuiOutraConsultaNoMesmoHorario) {
             throw new ValidacaoException("Médico já possui outra consulta agendada nesse mesmo horário.");

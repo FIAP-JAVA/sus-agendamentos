@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.domain.consulta.validacoes;
+package br.com.fiap.sus_agendamentos.domain.consulta.validacoes.agendamento;
 
 import br.com.fiap.sus_agendamentos.domain.consulta.AgendamentoConsultaDTO;
 import br.com.fiap.sus_agendamentos.infra.exception.ValidacaoException;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-@Component
+@Component("ValidadorHorarioAntecedenciaAgendamento")
 public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoDeConsulta {
 
     @Override

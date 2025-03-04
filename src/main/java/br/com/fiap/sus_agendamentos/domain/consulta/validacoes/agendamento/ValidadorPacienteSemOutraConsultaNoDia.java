@@ -1,7 +1,8 @@
-package br.com.fiap.sus_agendamentos.domain.consulta.validacoes;
+package br.com.fiap.sus_agendamentos.domain.consulta.validacoes.agendamento;
 
 import br.com.fiap.sus_agendamentos.domain.consulta.AgendamentoConsultaDTO;
 import br.com.fiap.sus_agendamentos.domain.consulta.ConsultaRepository;
+import br.com.fiap.sus_agendamentos.domain.consulta.validacoes.agendamento.ValidadorAgendamentoDeConsulta;
 import br.com.fiap.sus_agendamentos.infra.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package br.com.fiap.sus_agendamentos.domain.consulta.validacoes;
+package br.com.fiap.sus_agendamentos.domain.consulta.validacoes.agendamento;
 
 import br.com.fiap.sus_agendamentos.domain.consulta.AgendamentoConsultaDTO;
 
