@@ -1,11 +1,14 @@
 package br.com.fiap.sus_agendamentos.domain.consulta;
 
+import br.com.fiap.sus_agendamentos.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
 import br.com.fiap.sus_agendamentos.domain.medico.Medico;
 import br.com.fiap.sus_agendamentos.domain.medico.MedicoRepository;
 import br.com.fiap.sus_agendamentos.domain.paciente.PacienteRepository;
 import br.com.fiap.sus_agendamentos.infra.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AgendaDeConsultas {
@@ -19,6 +22,9 @@ public class AgendaDeConsultas {
     @Autowired
     private PacienteRepository pacienteRepository;
 
+    @Autowired
+    private List<ValidadorAgendamentoDeConsulta> validadorAgendamentoDeConsultas;
+
     public void agendar(AgendamentoConsultaDTO agendamentoConsultaDTO) {
         if (!pacienteRepository.existsById(agendamentoConsultaDTO.idPaciente())) {
             throw new ValidacaoException("Id do paciente informado não existe.");
@@ -27,6 +33,8 @@ public class AgendaDeConsultas {
         if (agendamentoConsultaDTO != null && !medicoRepository.existsById(agendamentoConsultaDTO.idMedico())) {
             throw new ValidacaoException("Id do médico informado não existe.");
         }
+
+        validadorAgendamentoDeConsultas.forEach(validador -> validador.validar(agendamentoConsultaDTO));
 
         var paciente = pacienteRepository.getReferenceById(agendamentoConsultaDTO.idPaciente());
         var medico = escolherMedico(agendamentoConsultaDTO);

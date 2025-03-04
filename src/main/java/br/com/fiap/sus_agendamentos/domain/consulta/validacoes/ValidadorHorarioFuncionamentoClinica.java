@@ -2,11 +2,14 @@ package br.com.fiap.sus_agendamentos.domain.consulta.validacoes;
 
 import br.com.fiap.sus_agendamentos.domain.consulta.AgendamentoConsultaDTO;
 import br.com.fiap.sus_agendamentos.infra.exception.ValidacaoException;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
-public class ValidadorHorarioFuncionamentoClinica {
+@Component
+public class ValidadorHorarioFuncionamentoClinica implements ValidadorAgendamentoDeConsulta {
 
+    @Override
     public void validar(AgendamentoConsultaDTO agendamentoConsultaDTO) {
         var dataConsulta = agendamentoConsultaDTO.data();
 

@@ -3,11 +3,16 @@ package br.com.fiap.sus_agendamentos.domain.consulta.validacoes;
 import br.com.fiap.sus_agendamentos.domain.consulta.AgendamentoConsultaDTO;
 import br.com.fiap.sus_agendamentos.domain.medico.MedicoRepository;
 import br.com.fiap.sus_agendamentos.infra.exception.ValidacaoException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidadorMedicoAtivo {
+@Component
+public class ValidadorMedicoAtivo implements ValidadorAgendamentoDeConsulta {
 
+    @Autowired
     private MedicoRepository medicoRepository;
 
+    @Override
     public void validar(AgendamentoConsultaDTO agendamentoConsultaDTO) {
         //escolha do médico opcional
         if (agendamentoConsultaDTO.idMedico() == null) {
