@@ -7,14 +7,14 @@ title SUS AGENDAMENTOS
 Person(usuario, "Usuário", "Paciente ou Médico que interage com o sistema")
 
 System_Boundary(susAgendamento, "API de Agendamento do SUS") {
-    System(sistema, "Sistema Monolíto", "Java 17 - Spring Boot 3.0", "Gerencia autenticação, pacientes, médicos e agendamentos")
+    System(sistema, "Sistema Monolíto", "Java 17 - Spring Boot 3.0.0", "Gerencia autenticação, pacientes, médicos e agendamentos")
 
     Container(authService, "Módulo de Autenticação", "JWT", "Valida credenciais e gera tokens")
     Container(agendamentoService, "Módulo de Agendamentos", "CRUD de consultas")
     Container(medicoService, "Módulo de Médicos", "CRUD de médicos")
     Container(pacienteService, "Módulo de Pacientes", "CRUD de pacientes")
 
-    SystemDb(database, "Banco de Dados", "PostgreSQL 15", "Armazena todas as informações")
+    SystemDb(database, "Banco de Dados", "PostgreSQL 15+", "Armazena todas as informações")
 }
 
 Rel(usuario, authService, "Faz login", "Usuário e senha")
