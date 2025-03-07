@@ -1,0 +1,33 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+title SUS AGENDAMENTOS
+
+Person(usuario, "Usuário", "Paciente ou Médico que interage com o sistema")
+
+System_Boundary(susAgendamento, "Sistema de Agendamento SUS") {
+    System(sistema, "Sistema Monolíto", "Java 17 - Spring Boot 3.0", "Gerencia autenticação, pacientes, médicos e agendamentos")
+
+    Container(authService, "Módulo de Autenticação", "JWT", "Valida credenciais e gera tokens")
+    Container(agendamentoService, "Módulo de Agendamentos", "CRUD de consultas")
+    Container(medicoService, "Módulo de Médicos", "CRUD de médicos")
+    Container(pacienteService, "Módulo de Pacientes", "CRUD de pacientes")
+
+    SystemDb(database, "Banco de Dados", "PostgreSQL 15", "Armazena todas as informações")
+}
+
+Rel(usuario, authService, "Faz login", "Usuário e senha")
+Rel(authService, usuario, "Retorna Token JWT", "JWT")
+Rel(usuario, sistema, "Realiza operações no sistema", "Envia Token JWT")
+
+Rel(sistema, authService, "Autentica usuário e valida Token JWT")
+Rel(sistema, agendamentoService, "Gerencia consultas")
+Rel(sistema, medicoService, "Gerencia médicos")
+Rel(sistema, pacienteService, "Gerencia pacientes")
+
+Rel(agendamentoService, database, "Persiste dados de consultas")
+Rel(medicoService, database, "Persiste dados de médicos")
+Rel(pacienteService, database, "Persiste dados de pacientes")
+
+@enduml
